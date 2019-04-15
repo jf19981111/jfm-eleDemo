@@ -20,7 +20,8 @@ export default {
     }
   },
   components: {
-    FooterBar
+    FooterBar,
+
   }
 }
 </script>
