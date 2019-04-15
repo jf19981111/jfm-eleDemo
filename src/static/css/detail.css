@@ -1,0 +1,457 @@
+/* 详情 头部 S */
+nav {
+    background: url('../images/detail/gohead.webp') center;
+    height: 1rem;
+    background-size: cover;
+  }
+  nav .icon-xiangzuo {
+    font-size: 0.26rem;
+    color: #ccc;
+    padding-top: 0.02rem;
+    display: block;
+    margin-left: 0.03rem;
+  }
+  .shop_info .logo {
+    height: 0.8rem;
+    width: 0.8rem;
+    border: 1px solid #ebebeb;
+    border-radius: 0.02rem;
+    position: relative;
+    position: absolute;
+    top: 0.4rem;
+    left: 50%;
+    margin-left: -0.33rem;
+  }
+  .shop_info .logo img {
+    width: 100%;
+  }
+  .shop_info .logo span {
+    position: absolute;
+    color: #6f3f15;
+    font-weight: 700;
+    background-image: linear-gradient(90deg,#fff100,#ffe339);
+    border-radius: 0.02rem;
+  }
+  .shop_info .title {
+    margin-top: 0.3rem;
+  }
+  .shop_info .title h2 {
+    font-size: 0.24rem;
+    text-align: center;
+    color: #333333;
+  }
+  .shop_info .title .icon-yousanjiao {
+    font-size: 0.23rem;
+  }
+  .shop_info .title .tag {
+    color: #666666;
+    text-align: center;
+    margin-top: 0.06rem;
+  }
+  .shop_info .title .tag span {
+    margin: 0 0.02rem;
+  }
+  .shop_info .title .discount {
+    margin-top: 0.1rem;
+    display: flex;
+    justify-content: space-around;
+  }
+  .discount .special {
+    width: 0.23rem;
+    height: 0.11rem;
+    padding: 0 0.04rem;
+    background-color: rgb(241, 136, 79);
+    color: #fff;
+    padding-bottom: 0.01rem;
+  }
+  .discount .dis_count {
+    color: #999999;
+  }
+  .shop_info .notice {
+    color: #999999;
+    width: 2.98rem;
+    margin: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 0.09rem;
+  }
+ /* 详情头部 E */ 
+ 
+/* 选项切换 S */
+.isFixed {
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    top: 0;
+    background: #fff;
+  }
+  .shop_tab ul {
+    display: flex;
+  }
+  .shop_tab ul li{
+    flex: 1;
+    text-align: center;
+    font-size: 0.16rem;
+    margin: 0.16rem 0 0.08rem;
+  }
+  .shop_tab li p {
+    width: 0.38rem;
+    margin: auto;
+    padding-bottom: 0.05rem;
+    color: #666666;
+  }
+  .shop_tab .active {
+    border-bottom: 0.03rem solid #2395ff;
+    font-weight: 700;
+    color: #000;
+  }
+  .hot {
+    padding: 0 0.16rem;
+  }
+  .hot img {
+    width: 100%;
+    border-radius: 0.04rem;
+  }
+/* 选项切换 E */
+/* 正面刚 S */
+ .recommend {
+    background: #fff;
+    padding: 0 0.16rem;
+    padding-top: 0.1rem;
+  }
+  .recommend .recommend_title {
+    font-size: 0.18rem;
+    color: #000;
+    font-weight: 700;
+  }
+  .rec_menu ul {
+    overflow-x: scroll;
+    display: flex;
+  }
+  .rec_menu ul li {
+    width: 1.3rem;
+    flex: none;
+    margin-right: 0.14rem;
+  }
+  .rec_menu img {
+    width: 100%;
+  }
+  .rec_menu .menu_title .des {
+    padding: 0.05rem 0;
+    font-size: 0.16rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .rec_menu .menu_title .sale {
+    color: #999999;
+    margin-bottom: 0.06rem;
+  }
+  .price {
+    display: flex;
+    justify-content: space-between;
+  }
+  .price p {
+    color: rgb(255, 83, 57);
+    font-size: 0.18rem;
+  }
+  .price p small {
+    font-size: 0.16rem;
+  }
+  .price a {
+    display: block;
+    width: 0.25rem;
+    height: 0.25rem;
+    background: rgb(35, 149, 255);
+    text-align: center;
+    color: #fff;
+    font-size: 0.18rem;
+    border-radius: 45%;
+  }
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+/* 正面刚 E */
+
+/* menu S */
+.main_menu {
+    display: flex;
+    height: 6.9rem;
+    overflow: hidden;
+  }
+  .menu_category {
+    background-color: #f8f8f8;
+    overflow-y: auto;
+  }
+  .menu_category li img {
+    width: 0.15rem;
+  }
+  .menu_category li {
+    padding: 0.2rem 0.1rem;
+    text-align: left;
+    font-size: 0.15rem;
+    width: 0.7rem;
+    flex: none;
+  }
+  .menu_category .active {
+    background-color: #fff;
+  }
+  .menu_label {
+    padding: 0.06rem 0;
+  }
+  .menu_label span {
+    margin-left: 0.1rem;
+    font-size: 0.15rem;
+  }
+  .menuItem {
+    margin-left: 0.1rem;
+    display: flex;
+    margin: 0.05rem 0;
+  }
+  .menuItem img {
+    margin-right: 0.1rem;
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+  .food_info {
+    padding: 0 0.1rem 0.15rem 0;
+  }
+  .food_info .food_name {
+    font-size: 0.16rem;
+    font-weight: 700;
+  }
+  .food_info .food_des {
+    width: 1.6rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 0.05rem 0;
+    color: #9999a6;
+  }
+  .food_sale {
+    color: #9999a6;
+    margin-bottom: 0.06rem;
+  }
+  .food_info a {
+    display: block;
+    width: 0.25rem;
+    height: 0.25rem;
+    background: rgb(35, 149, 255);
+    text-align: center;
+    color: #fff;
+    font-size: 0.18rem;
+    border-radius: 45%;
+  }
+  .food_act {
+    color: #eb6551;
+  }
+  .price {
+    color: rgb(255, 83, 57);
+    font-size: 0.18rem;
+  }
+  /*.price span {
+    font-size: 0.16rem;
+    margin-right: -0.06rem;
+  }*/
+  .price del {
+    font-size: 0.12rem;
+    color: #9999a6;
+  }
+  .food_p {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.05rem;
+  }
+  .menu_list {
+    overflow-y: auto;
+  }
+/* menu E */
+
+/* shopCar S */
+.car {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+.car-foot {
+  display: flex;
+}
+.manjian {
+  background: #fffad6;
+  font-size: 0.12rem;
+  opacity: .96;
+  text-align: center;
+  padding: 0.05rem 0;
+}
+.car-foot {
+  position: relative;
+  background: rgba(61,61,63,.9);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 0.5rem;
+  /* margin-top: 0.5rem; */
+}
+.car-foot .carlogo {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 100%;
+  background: radial-gradient(circle,#363636 6.266667vw,#444 0);
+  border: 0.05rem solid #444;
+  position: absolute;
+  top: -0.1rem;
+  left: 0.1rem;
+  text-align: center;
+  line-height: 0.4rem;
+}
+.car-foot .icon-gouwuche {
+  color: #666;
+  font-size: 0.25rem;
+  /* text-align: center;
+  margin: 0 auto; */
+  position: absolute;
+  top: 0;
+  left: 20%;
+}
+.car-foot .carlogo.active {
+  color: #fff;
+  font-size: 0.25rem;
+  background: #3190e8;
+}
+.car-foot .carlogo.active span {
+  color: #fff;
+}
+.car-foot .carlogo.active .countNum {
+  position: absolute;
+  top: -0.06rem;
+  right: -0.05rem;
+  width: 0.15rem;
+  height: 0.15rem;
+  line-height: 0.15rem;
+  background: red;
+  font-size: 12px;
+  border-radius: 50%;
+}
+.car-foot .price {
+  flex: 4;
+  /* text-align: center; */
+  padding-left: 0.8rem;
+  color: #999;
+}
+.car-foot .account {
+  flex: 2;
+  text-align: center;
+  line-height:0.5rem;
+  background: #535356;
+  color: #fff;
+  font-size: 0.16rem;
+  font-weight: 700;
+  width: 1rem;
+}
+.noShop {
+  font-size: 0.14rem;
+}
+.noShop .now {
+  color: #fff;
+  font-size: 0.2rem;
+}
+
+.car-foot .account.active {
+  background: #38ca73;
+}
+.carmiddle {
+
+  color: #666;
+  /* padding: 0 0.1rem; */
+}
+.carmiddle ul {
+  padding: 0 0.1rem;
+  background: #fff;
+}
+.carmiddle ul li {
+  height: 0.5rem;
+}
+.carmiddle .yixuan {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.16rem;
+  align-items: center;
+  height: 100%;
+  height: 0.5rem;
+  background: #eceff1;
+}
+.yixuan .goods {
+  padding-left: 0.1rem;
+}
+.yixuan .cancelAll {
+  padding-right: 0.1rem;
+}
+.cancelAll {
+  position: relative;
+}
+.cancelAll span {
+  font-size: 0.3rem;
+  position: absolute;
+  left: -0.2rem;
+  top: -0.13rem;
+}
+.goodsInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.goodsInfo .goodsname {
+  /* flex: 2; */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+  font-size: 0.18rem;
+}
+.goodsInfo .priceInfo {
+  /* flex: 2; */
+  width: 1rem;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  font-size: 0.12rem;
+}
+.goodsInfo .priceInfo del {
+  font-size: 0.12rem;
+  margin-right: 0.03rem;
+}
+.goodsInfo .priceInfo span {
+  font-size: 0.2rem;
+  color: rgb(255, 83, 57);
+  font-weight: 700;
+}
+.goodsInfo .update {
+  /* flex: 1; */
+  display: flex;
+  align-items: center;
+
+}
+.goodsInfo .update .caozuo {
+  width: 0.2rem;
+  height: 0.2rem;
+  line-height: 0.17rem;
+  border: 0.02rem solid rgb(35, 149, 255);
+  text-align: center;
+  border-radius: 50%;
+  font-size: 0.25rem;
+}
+.goodsInfo .update .jian {
+  color: rgb(35, 149, 255);
+}
+.goodsInfo .update .jia {
+  background: rgb(35, 149, 255);
+  color: #fff;
+}
+.goodsInfo .update .num {
+  font-size: 0.16rem;
+  margin: 0 0.1rem;
+}
+/* shopCar E" */
