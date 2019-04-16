@@ -1,4 +1,5 @@
 <template>
+
     <!-- footer S -->
     	<footer class="foo">
 		    <ul>
@@ -11,25 +12,6 @@
 		          	{{ tab.name }}
 		        </router-link>
 		      </li>
-		       <!-- <li>
-                   icon-changyonglogo401
-		        <a href="#/find">
-		          <span class="iconfont icon-faxian"></span>
-		          	发现
-		        </a>
-		      </li>
-		       <li>
-		        <a href="#/order">
-		          <span class="iconfont icon-icon--copy"></span>
-		          	订单
-		        </a>
-		      </li>
-		       <li>
-		        <a href="#/center">
-		          <span class="iconfont icon-wode-copy"></span>
-		          	我的
-		        </a>
-		      </li> -->
 		    </ul>
   		</footer>
     <!-- footer E -->

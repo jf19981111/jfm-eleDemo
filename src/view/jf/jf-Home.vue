@@ -1,107 +1,110 @@
 <template>
-  <div class="main">
-    <header>
-      <div class="addr">
-        <i class="iconfont icon-wodedizhi"></i>
-        <p class="address">请输入配送地址</p>
-      </div>
-      <input type="text" placeholder="搜索饿了么商家、商品名称">
-      <span class="iconfont icon-sousuo"></span>
-    </header>
-    <nav class="fruit">
-      <ul>
-        <li v-for="item in navList" :key="item.id">
-          <router-link to="/food">
-            <img :src="item.src" alt>
-            <p>{{ item.name }}</p>
-          </router-link>
-        </li>
-      </ul>
-    </nav>
-    <!-- hot S -->
-    <div class="hot">
-      <ul>
-        <li>
-          <a class="pz" href>
-            <p class="taocan">品质套餐</p>
-            <p class="quan">搭配齐全吃得好</p>
-            <p class="qiang">
-              立即抢购
-              <span class="iconfont icon-llmainpageback-copy-copy"></span>
-            </p>
-          </a>
-        </li>
-        <li>
-          <a class="vip" href>
-            <img src="../../static/images/nav/hg.webp">
-            <span>
-              <b style="font-weight: 700;">超级会员</b> ● 每月领20元红包
-            </span>
-            <p>
-              立即开通
-              <span class="iconfont icon-llmainpageback-copy-copy"></span>
-            </p>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <!-- hot E -->
-    <!-- banner S -->
-    <div class="slide" id="slide">
-      <!-- 轮播 -->
-      <ul id="slid">
-        <li>
-          <a href>
-            <img src="../../static/images/banner/banner1.webp" style="width: 100%;height: 110px;">
-          </a>
-        </li>
-        <li>
-          <a href>
-            <img src="../../static/images/banner/banner2.webp" style="width: 100%;height: 110px;">
-          </a>
-        </li>
-      </ul>
-    </div>
-    <!-- banner E -->
-    <!-- 商家推荐 S -->
-    <div class="sell">
-      <!-- 商家推荐页 -->
-      <h2>—— 推荐商家 ——</h2>
-      <nav class="recomd">
-        <a href>
-          综合排序
-          <span class="iconfont icon-xiasanjiao-copy"></span>
-        </a>
-        <a href>距离最近</a>
-        <a href>品质联盟</a>
-        <a href class="select">
-          筛选
-          <img src="../../static/images/sell/select.png" alt>
-        </a>
-      </nav>
-      <!-- 商家推荐内容 -->
-    </div>
-    <!-- 商家推荐 E -->
-    <!-- content S -->
-    <jfContent
-      :menuArr='menu.restaurant'
-      v-for="(menu,index) in menus"
-      :key="index"
-    ></jfContent>
-    <!-- 加载 -->
+  <!-- 加载 -->
     <van-list
       v-model="loading"
       :finished="finished"
       finished-text="没有更多了"
       @load="onLoad"
+      :offset="10"
+      style="padding-bottom: 0.49rem;"
     >
-      <van-cell
-        v-for="item in list"
-        :key="item"
-      />
-    </van-list>
-    <!-- content E -->
-  </div>
+    <div class="main">
+      <header>
+        <div class="addr">
+          <i class="iconfont icon-wodedizhi"></i>
+          <p @click='dizhi' class="dizhi">{{address?address:'请输入配送地址'}}</p>
+        </div>
+        <div class="search" id="search" :class="{searchFixed: searchFixed}">
+          <input type="text" placeholder="搜索饿了么商家、商品名称">
+          <span class="iconfont icon-sousuo"></span>
+        </div>
+
+      </header>
+      <nav class="fruit">
+        <ul>
+          <li v-for="item in navList" :key="item.id">
+            <router-link to="/food">
+              <img :src="item.src" alt>
+              <p>{{ item.name }}</p>
+            </router-link>
+          </li>
+        </ul>
+      </nav>
+      <!-- hot S -->
+      <div class="hot">
+        <ul>
+          <li>
+            <a class="pz" href>
+              <p class="taocan">品质套餐</p>
+              <p class="quan">搭配齐全吃得好</p>
+              <p class="qiang">
+                立即抢购
+                <span class="iconfont icon-llmainpageback-copy-copy"></span>
+              </p>
+            </a>
+          </li>
+          <li>
+            <a class="vip" href>
+              <img src="../../static/images/nav/hg.webp">
+              <span>
+                <b style="font-weight: 700;">超级会员</b> ● 每月领20元红包
+              </span>
+              <p>
+                立即开通
+                <span class="iconfont icon-llmainpageback-copy-copy"></span>
+              </p>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- hot E -->
+      <!-- banner S -->
+      <div class="slide" id="slide">
+        <!-- 轮播 -->
+        <ul id="slid">
+          <li>
+            <a href>
+              <img src="../../static/images/banner/banner1.webp" style="width: 100%;height: 110px;">
+            </a>
+          </li>
+          <li>
+            <a href>
+              <img src="../../static/images/banner/banner2.webp" style="width: 100%;height: 110px;">
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- banner E -->
+      <!-- 商家推荐 S -->
+      <div id="sell" class="sell">
+        <!-- 商家推荐页 -->
+        <h2 class="h2">—— 推荐商家 ——</h2>
+        <nav class="recomd" id="recomd" :class="{fixed: isFixed}">
+          <a href>
+            综合排序
+            <span class="iconfont icon-xiasanjiao-copy"></span>
+          </a>
+          <a href>距离最近</a>
+          <a href>品质联盟</a>
+          <a href class="select">
+            筛选
+            <img src="../../static/images/sell/select.png" alt>
+          </a>
+        </nav>
+        <!-- 商家推荐内容 -->
+      </div>
+      <!-- 商家推荐 E -->
+      <!-- content S -->
+
+      <jfContent
+        :menuArr='menu.restaurant'
+        v-for="(menu,index) in menus"
+        :key="index"
+      ></jfContent>
+
+      <!-- content E -->
+    </div>
+  </van-list>
 </template>
 
 <script>
@@ -110,6 +113,14 @@ import axios from 'axios'
 export default {
   data() {
     return {
+      /**
+       * search 是否固定
+       */
+      searchFixed: false,
+      /**
+       * shopBar是否 固定
+       */
+      isFixed: false,
       navList: [
         {
           id: 1,
@@ -166,34 +177,50 @@ export default {
       flavor: '',
       active: '',
       loading: false, // 是否在请求数据
-      finished: false, // 代表数据是否没有更多了
+      // finished: false, // 代表数据是否没有更多了
       list: [], //商家列表
 
-      pageNum: 1,
-      pageSize: 2,
-      totalSize: 10
+      // 地址
+      address: '',
+
+      pageNum: 0,//第几页
+      pageSize: 8,//每页几条
+      totalSize: 10//一共几条
     }
   },
   computed: {
     totalPage() {
       return Math.ceil(this.totalSize / this.pageSize)
+    },
+    finished() {
+      return  this.pageNum >= this.totalPage
     }
   },
   components: {
     jfContent
   },
   methods: {
-    getList() {
-      axios.get('/json/content.json')
-          .then(res => {
-              this.menus = res.data.items
-              // console.log(res.data)
-          })
+    // getList() {
+    //   axios.get('/json/content.json')
+    //       .then(res => {
+    //           this.menus = res.data.items
+    //           // console.log(res.data)
+    //       })
+    // },
+    /**
+     * 地址城市加载
+     */
+    dizhi() {
+      this.$router.push({
+        path: '/map'
+      })
     },
     /**
      * 加载数据
      */
     onLoad() {
+      console.log('===================');
+      this.pageNum++
       axios.get('/json/content.json', {
         params: {
           pageNum: this.pageNum,
@@ -201,28 +228,66 @@ export default {
         }
       }).then(res => {
         var data = res.data.items
+        console.log(data)
         // 前端处理分页
         this.totalSize = data.length
+        console.log(data.length)
         this.menus = this.menus.concat(data.splice((this.pageNum - 1) * this.pageSize,this.pageSize))
-        console.log(data)
+        //this.menus = res.data.items
+        this.loading = false
       })
+    },
+    /**
+     * 滚动事件 固定
+     */
+    onScroll() {
+      // console.log('1111')
+      // 计算滚动条距离顶部的距离
+      let scrollTop = document.documentElement.scrollTop
+      let search = document.getElementById('search')
+      let recomd = document.getElementById('recomd')
+      //console.log(scrollTop)
+      //console.log(search.offsetTop)
+      //let temp = recomd.offsetTop
+      //console.log(scrollTop,recomd.offsetTop,temp)
+      if (scrollTop >= 30) {
+        this.searchFixed = true
+      } else {
+        this.searchFixed = false
+      }
+      if (scrollTop >= 490) {
+        this.isFixed = true
+      } else {
+        this.isFixed = false
+      }
     }
   },
-  created() {
-      this.getList()
+  // created() {
+  //     this.getList()
+  // }
+  mounted() {
+     //判断session是否存在地址
+    this.address = sessionStorage.getItem('addr');
+    /**
+     * 监听滚动事件
+     */
+    window.addEventListener('scroll',this.onScroll)
+  },
+  deactivated() {
+    window.removeEventListener('scroll',this.onScroll)
   }
-};
+}
 </script>
 
 
 <style>
 .main {
-  height: 100%;
+  /* height: 100%;
   width: 100%;
   flex: 1;
   overflow-x: hidden;
   overflow-y: auto;
-  padding-bottom: 0.49rem;
+  padding-bottom: 0.49rem; */
 }
 /* header S */
 header {
@@ -231,11 +296,12 @@ header {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 0.1rem;
+  /* padding: 0.1rem; */
 }
 header .addr {
   display: flex;
   align-items: center;
+  padding: 0.1rem;
 }
 header .addr p {
   color: #fff;
@@ -245,7 +311,25 @@ header .icon-wodedizhi {
   color: #eee;
   font-size: 0.33rem;
 }
+.search {
+  padding: 2vw 3.733333vw;
+  margin: -.133333vw 0;
+  z-index: 101;
+  top: 0;
+  position:relative
+}
+.searchFixed {
+  position: fixed;
+  background-image: linear-gradient(90deg,#0af,#0085ff);
+  padding: 2vw 3.733333vw;
+  margin: -.133333vw 0;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  right: 0;
+}
 header input {
+  width: 100%;
   height: 0.4rem;
   margin-top: 0.1rem;
   font-size: 0.16rem;
@@ -255,9 +339,10 @@ header input {
 header .icon-sousuo {
   position: absolute;
   color: #888;
-  left: 14%;
-  top: 56%;
+  left: 20%;
+  top: 46%;
   font-size: 0.16rem;
+  z-index: 101;
 }
 /* header E */
 /* nav S */
@@ -271,7 +356,7 @@ nav li {
   width: 20%;
   margin-top: 0.15rem;
 }
-nav a {
+.fruit a {
   display: block;
   text-align: center;
   overflow: hidden;
@@ -350,14 +435,23 @@ nav a {
 }
 /* banner E */
 /* 商家内容 S */
-h2 {
+.h2 {
   text-align: center;
   line-height: 0.5rem;
   font-weight: normal;
   color: #000;
 }
+.fixed {
+  position: fixed;
+  top: 54px;
+  width: 100%;
+  background: #fff;
+  z-index: 10;
+}
 .recomd {
   display: flex;
+  height: .60rem;
+  align-items: center;
 }
 .recomd a {
   flex: 1;
@@ -370,7 +464,7 @@ h2 {
 .recomd .select img {
   position: absolute;
   right: 0.1rem;
-  top: 28%;
+  top: 26%;
 }
 /*商家内容 E */
 </style>

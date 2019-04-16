@@ -6,6 +6,198 @@
                 "act_tag": 0,
                 "activities": [
                     {
+                        "attribute": "{\"52\": {\"1\": 12.0, \"0\": 0}, \"28\": {\"1\": 5.0, \"0\": 0}, \"108\": {\"1\": 38.0, \"0\": 0}}",
+                        "description": "满28减5，满52减12，满108减38",
+                        "icon_color": "f07373",
+                        "icon_name": "减",
+                        "id": 2074882122,
+                        "is_exclusive_with_food_activity": true,
+                        "name": "满减活动",
+                        "tips": "满28减5，满52减12，满108减38",
+                        "type": 102
+                    },
+                    {
+                        "description": "特价商品1.99元起",
+                        "icon_color": "f1884f",
+                        "icon_name": "特",
+                        "id": 2100557450,
+                        "name": "单品定价",
+                        "tips": "单品定价"
+                    },
+                    {
+                        "attribute": "17.0",
+                        "description": "新用户下单立减17元",
+                        "icon_color": "70bc46",
+                        "icon_name": "首",
+                        "id": 21538779786,
+                        "is_exclusive_with_food_activity": true,
+                        "name": "新用户立减(不与其他活动共享)",
+                        "tips": "新用户下单立减17元",
+                        "type": 103
+                    }
+                ],
+                "address": "深圳市宝安区航城街道钟屋2路62号03铺",
+                "authentic_id": 5374731146845248,
+                "business_info": "{\"lemon_support_tags\": [{\"color\": \"cce23028\", \"text\": \"28减5\", \"border\": \"4ce23028\", \"background\": null, \"type\": 1, \"icon\": null}, {\"color\": \"cce23028\", \"text\": \"52减12\", \"border\": \"4ce23028\", \"background\": null, \"type\": 1, \"icon\": null}, {\"color\": \"cce23028\", \"text\": \"108减38\", \"border\": \"4ce23028\", \"background\": null, \"type\": 1, \"icon\": null}, {\"color\": \"cce23028\", \"text\": \"1.99元特价\", \"border\": \"4ce23028\", \"background\": null, \"type\": 7, \"icon\": null}, {\"color\": \"cce23028\", \"text\": \"首单减17\", \"border\": \"4ce23028\", \"background\": null, \"type\": 5, \"icon\": null}], \"ad_info\": null}",
+                "delivery_fee_discount": 0,
+                "description": "",
+                "distance": 666,
+                "favored": false,
+                "flavors": [
+                    {
+                        "id": 212,
+                        "name": "汉堡薯条"
+                    },
+                    {
+                        "id": 234,
+                        "name": "炸鸡炸串"
+                    }
+                ],
+                "float_delivery_fee": 3,
+                "float_minimum_order_amount": 15,
+                "folding_restaurant_brand": "华莱士",
+                "folding_restaurants": [
+                    {
+                        "distance": 1022,
+                        "id": "E10696374227716160612",
+                        "name": "华莱士炸鸡汉堡(后瑞店)",
+                        "order_lead_time": 38,
+                        "scheme": "https://h5.ele.me/shop/#id=E10696374227716160612",
+                        "type": 0
+                    },
+                    {
+                        "distance": 1660,
+                        "id": "E613780754873328970",
+                        "name": "华莱士炸鸡汉堡(鸿运店)",
+                        "order_lead_time": 40,
+                        "scheme": "https://h5.ele.me/shop/#id=E613780754873328970",
+                        "type": 0
+                    },
+                    {
+                        "distance": 2048,
+                        "id": "E2307111586938317281",
+                        "name": "华莱士炸鸡汉堡(三围店)",
+                        "order_lead_time": 37,
+                        "scheme": "https://h5.ele.me/shop/#id=E2307111586938317281",
+                        "type": 0
+                    },
+                    {
+                        "distance": 2292,
+                        "id": "E8639389891430176508",
+                        "name": "华莱士炸鸡汉堡(兴围店)",
+                        "order_lead_time": 39,
+                        "scheme": "https://h5.ele.me/shop/#id=E8639389891430176508",
+                        "type": 0
+                    },
+                    {
+                        "distance": 3927,
+                        "id": "E15072225761096945008",
+                        "name": "华莱士炸鸡汉堡(福永福围店)",
+                        "order_lead_time": 35,
+                        "scheme": "https://h5.ele.me/shop/#id=E15072225761096945008",
+                        "type": 0
+                    },
+                    {
+                        "distance": 5329,
+                        "id": "E14770031493354820264",
+                        "name": "华莱士炸鸡汉堡(欢喜店)",
+                        "order_lead_time": 36,
+                        "scheme": "https://h5.ele.me/shop/#id=E14770031493354820264",
+                        "type": 0
+                    }
+                ],
+                "has_story": false,
+                "id": "E377229027896219990",
+                "image_path": "/images/content/hls.webp",
+                "is_new": false,
+                "is_premium": true,
+                "is_star": false,
+                "is_stock_empty": 0,
+                "is_valid": 1,
+                "latitude": 22.624876,
+                "longitude": 113.84461,
+                "max_applied_quantity_per_order": -1,
+                "name": "华莱士炸鸡汉堡(黄田店)",
+                "next_business_time": "明天 09:00",
+                "only_use_poi": false,
+                "opening_hours": [
+                    "09:00/03:45"
+                ],
+                "order_lead_time": 51,
+                "out_of_range": false,
+                "phone": "0755-82596750",
+                "piecewise_agent_fee": {
+                    "description": "配送费¥3",
+                    "extra_fee": 0,
+                    "is_extra": false,
+                    "no_subsidy_fee": "",
+                    "rules": [
+                        {
+                            "fee": 3,
+                            "price": 15
+                        }
+                    ],
+                    "tips": "配送费¥3"
+                },
+                "platform": 0,
+                "posters": [],
+                "promotion_info": "欢迎光临，华莱士优先配送饿了么外卖\n1、任凭风吹雨打，华仔全力以赴若有延误，万分抱歉！查询进度请电82596750，谢谢！\n2、蕃茄酱是薯条的专配！孜然粉与手扒鸡是绝配，如需要，请备注！\n3、客官，给个好评！颜值倍增，不信试试\n4、宝贵意见请致电餐厅经理15814721779杨",
+                "rating": 4.7,
+                "rating_count": 173,
+                "recent_order_num": 849,
+                "recommend": {
+                    "color": "#e8470b",
+                    "image_hash": "",
+                    "is_ad": false,
+                    "reason": "",
+                    "track": "{\"rankType\":\"3\"}"
+                },
+                "recommend_reasons": [
+                    {
+                        "name": "回头客多"
+                    }
+                ],
+                "regular_customer_count": 0,
+                "scheme": "https://h5.ele.me/shop/#id=E377229027896219990",
+                "status": 1,
+                "support_tags": [
+                    {
+                        "border": "dddddd",
+                        "color": "666666",
+                        "icon": "4e20966ca2a516de3f02fb9c7fd1bc6dpng",
+                        "text": "汉堡薯条",
+                        "type": 1
+                    },
+                    {
+                        "border": "dddddd",
+                        "color": "666666",
+                        "text": "口碑人气好店"
+                    },
+                    {
+                        "border": "4c000000",
+                        "color": "99000000",
+                        "text": "支持自取",
+                        "type": 20
+                    }
+                ],
+                "supports": [],
+                "target_tag_path": "d53fc0cb4dc67973038cbc591938a1b6png",
+                "theme": {
+                    "default_color": "2395ff",
+                    "header_style": 0,
+                    "hongbao_style": 0,
+                    "price_color": "ff5339",
+                    "third_tab_name": "商家",
+                    "vanish_fields": []
+                },
+                "type": 0
+            }
+        },
+        {
+            "restaurant": {
+                "act_tag": 0,
+                "activities": [
+                    {
                         "attribute": "{\"25\": {\"1\": 2.0, \"0\": 0}, \"35\": {\"1\": 3.0, \"0\": 0}, \"45\": {\"1\": 6.0, \"0\": 0}}",
                         "description": "满25减2，满35减3，满45减6",
                         "icon_color": "f07373",
@@ -2055,7 +2247,7 @@
                 "float_minimum_order_amount": 20,
                 "has_story": false,
                 "id": "E12715246395492840148",
-                "image_path": "/images/content/sy.webp",
+                "image_path": "/images/content/nc.webp",
                 "is_new": false,
                 "is_premium": false,
                 "is_star": false,
@@ -2214,7 +2406,7 @@
                 "float_minimum_order_amount": 20,
                 "has_story": false,
                 "id": "E7108831229218147617",
-                "image_path": "/images/content/sy.webp",
+                "image_path": "/images/content/sx.webp",
                 "is_new": false,
                 "is_premium": false,
                 "is_star": false,
