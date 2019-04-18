@@ -1,24 +1,24 @@
 <template>
   <!-- 加载 -->
-    <van-list
-      v-model="loading"
-      :finished="finished"
-      finished-text="没有更多了"
-      @load="onLoad"
-      :offset="10"
-      style="padding-bottom: 0.49rem;"
-    >
+  <van-list
+    v-model="loading"
+    :finished="finished"
+    finished-text="没有更多了"
+    @load="onLoad"
+    :offset="10"
+    style="padding-bottom: 0.49rem;"
+  >
     <div class="main">
-      <header>
+      <header class="syHome">
         <div class="addr">
           <i class="iconfont icon-wodedizhi"></i>
-          <p @click='dizhi' class="dizhi">{{address?address:'请输入配送地址'}}</p>
+          <p @click="dizhi" class="dizhi">{{address?address:'请选择所在城市'}}</p>
+          <!-- <p @click="dizhi" class="dizhi">{{$route.query.cityname?$route.query.cityname:'请选择所在城市'}}</p> -->
         </div>
         <div class="search" id="search" :class="{searchFixed: searchFixed}">
           <input type="text" placeholder="搜索饿了么商家、商品名称">
           <span class="iconfont icon-sousuo"></span>
         </div>
-
       </header>
       <nav class="fruit">
         <ul>
@@ -59,21 +59,28 @@
       </div>
       <!-- hot E -->
       <!-- banner S -->
-      <div class="slide" id="slide">
+      <!-- <div class="slide" id="slide"> -->
         <!-- 轮播 -->
-        <ul id="slid">
-          <li>
-            <a href>
-              <img src="../../static/images/banner/banner1.webp" style="width: 100%;height: 110px;">
+        <!-- <ul id="slid"> -->
+
+          <Banner :banners= "banners"></Banner>
+          <!-- <li>
+            <a href="">
+              <img src="/images/banner/banner1.webp" style="width: 100%;height: 110px;">
+            </a>
+          </li> -->
+          <!-- <li>
+            <a href="">
+              <img src="/images/banner/banner2.webp" style="width: 100%;height: 110px;">
             </a>
           </li>
           <li>
-            <a href>
-              <img src="../../static/images/banner/banner2.webp" style="width: 100%;height: 110px;">
+            <a href="">
+              <img src="/images/banner/banner3.webp" style="width: 100%;height: 110px;">
             </a>
-          </li>
-        </ul>
-      </div>
+          </li> -->
+        <!-- </ul> -->
+      <!-- </div> -->
       <!-- banner E -->
       <!-- 商家推荐 S -->
       <div id="sell" class="sell">
@@ -95,24 +102,26 @@
       </div>
       <!-- 商家推荐 E -->
       <!-- content S -->
-
-      <jfContent
-        :menuArr='menu.restaurant'
-        v-for="(menu,index) in menus"
-        :key="index"
-      ></jfContent>
-
+      
+        <jfContent :menuArr="menu.restaurant" v-for="(menu,index) in menus" :key="index"></jfContent>
+      
       <!-- content E -->
     </div>
   </van-list>
 </template>
 
 <script>
-import jfContent from '../../components/jf-content.vue'
-import axios from 'axios'
+import jfContent from "../../components/jf-content.vue"
+import Banner from '../../components/Banner.vue'
+import { mapMutations, mapState, mapGetters,mapActions } from 'vuex'
+// import axios from "axios";
 export default {
   data() {
     return {
+      /**
+       * isShow 显示隐藏
+       */
+      isShow: true,
       /**
        * search 是否固定
        */
@@ -121,6 +130,10 @@ export default {
        * shopBar是否 固定
        */
       isFixed: false,
+
+      /**
+       * 小图标的列表
+       */
       navList: [
         {
           id: 1,
@@ -173,124 +186,113 @@ export default {
           src: require("../../static/images/nav/xiaochi.png")
         }
       ],
-      menus: [],
-      flavor: '',
-      active: '',
-      loading: false, // 是否在请求数据
-      // finished: false, // 代表数据是否没有更多了
-      list: [], //商家列表
+      /**
+       * 轮播图的列表
+       */
+      banners: [
+        {
+          id: 1,
+          imgUrl: '/images/banner/banner1.webp'
+        },
+         {
+          id: 2,
+          imgUrl: '/images/banner/banner2.webp'
+        },
+        {
+          id: 3,
+          imgUrl: '/images/banner/banner3.webp'
+        },
+      ],
 
       // 地址
-      address: '',
-
-      pageNum: 0,//第几页
-      pageSize: 8,//每页几条
-      totalSize: 10//一共几条
-    }
+      address: ""
+    };
   },
   computed: {
-    totalPage() {
-      return Math.ceil(this.totalSize / this.pageSize)
-    },
-    finished() {
-      return  this.pageNum >= this.totalPage
+    ...mapState("seller", [
+      // 'loading', // 计算属性是不允许修改的
+      "menus",
+      "pageNumber",
+      "pageSize",
+      "totalSize"
+    ]),
+
+    ...mapGetters("seller", ["totalPage", "finished"]),
+
+    loading: {
+      get() {
+        return this.$store.state.seller.loading;
+      },
+
+      set(val) {
+        // 如果说 要 提交一个子模块的 突变，那么要加上 该模块 seller/changeLoading
+        this.$store.commit("seller/changeLoading", val);
+      }
     }
   },
   components: {
-    jfContent
+    jfContent,
+    Banner
   },
   methods: {
-    // getList() {
-    //   axios.get('/json/content.json')
-    //       .then(res => {
-    //           this.menus = res.data.items
-    //           // console.log(res.data)
-    //       })
-    // },
     /**
      * 地址城市加载
      */
     dizhi() {
       this.$router.push({
-        path: '/map'
-      })
+        path: "/map"
+      });
     },
-    /**
-     * 加载数据
-     */
-    onLoad() {
-      console.log('===================');
-      this.pageNum++
-      axios.get('/json/content.json', {
-        params: {
-          pageNum: this.pageNum,
-          pageSize: this.pageSize
-        }
-      }).then(res => {
-        var data = res.data.items
-        console.log(data)
-        // 前端处理分页
-        this.totalSize = data.length
-        console.log(data.length)
-        this.menus = this.menus.concat(data.splice((this.pageNum - 1) * this.pageSize,this.pageSize))
-        //this.menus = res.data.items
-        this.loading = false
-      })
-    },
+
+    ...mapMutations("seller", [
+      "changeList",
+      "changeTotalSize",
+      "changeLoading",
+      "addPageNum"
+    ]),
+
+    ...mapActions("seller", ["onLoad"]),
+
     /**
      * 滚动事件 固定
      */
     onScroll() {
-      // console.log('1111')
+      // console.log('1111',scroll)
       // 计算滚动条距离顶部的距离
-      let scrollTop = document.documentElement.scrollTop
-      let search = document.getElementById('search')
-      let recomd = document.getElementById('recomd')
-      //console.log(scrollTop)
-      //console.log(search.offsetTop)
-      //let temp = recomd.offsetTop
-      //console.log(scrollTop,recomd.offsetTop,temp)
+      let scrollTop = document.documentElement.scrollTop;
+      let search = document.getElementById("search");
+      let recomd = document.getElementById("recomd");
+      // console.log(scrollTop)
+      //  console.log(search.offsetTop)
+      // let temp = recomd.offsetTop
+      // console.log(scrollTop,recomd.offsetTop,temp)
       if (scrollTop >= 30) {
-        this.searchFixed = true
+        this.searchFixed = true;
       } else {
-        this.searchFixed = false
+        this.searchFixed = false;
       }
       if (scrollTop >= 490) {
-        this.isFixed = true
+        this.isFixed = true;
       } else {
-        this.isFixed = false
+        this.isFixed = false;
       }
     }
   },
-  // created() {
-  //     this.getList()
-  // }
   mounted() {
-     //判断session是否存在地址
-    this.address = sessionStorage.getItem('addr');
-    /**
-     * 监听滚动事件
-     */
-    window.addEventListener('scroll',this.onScroll)
+    // 判断session是否存在地址
+    this.address = sessionStorage.getItem("addr");
+    // console.log('hello')
+    window.addEventListener("scroll", this.onScroll);
   },
-  deactivated() {
-    window.removeEventListener('scroll',this.onScroll)
+  beforeDestroy () {
+    window.removeEventListener("scroll", this.onScroll);
   }
-}
+};
 </script>
 
-
 <style>
-.main {
-  /* height: 100%;
-  width: 100%;
-  flex: 1;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding-bottom: 0.49rem; */
-}
 /* header S */
-header {
+.syHome {
   height: 1rem;
   background: linear-gradient(90deg, #0af, #0085ff);
   position: relative;
@@ -298,31 +300,32 @@ header {
   flex-direction: column;
   /* padding: 0.1rem; */
 }
-header .addr {
+.syHome .addr {
   display: flex;
   align-items: center;
   padding: 0.1rem;
+  /* padding-top: 0.15rem; */
 }
-header .addr p {
+.syHome .addr p {
   color: #fff;
   font-size: 0.2rem;
 }
-header .icon-wodedizhi {
+.syHome .icon-wodedizhi {
   color: #eee;
   font-size: 0.33rem;
 }
 .search {
   padding: 2vw 3.733333vw;
-  margin: -.133333vw 0;
+  margin: -0.133333vw 0;
   z-index: 101;
-  top: 0;
-  position:relative
+  top: -26px;
+  position: relative;
 }
 .searchFixed {
   position: fixed;
-  background-image: linear-gradient(90deg,#0af,#0085ff);
+  background-image: linear-gradient(90deg, #0af, #0085ff);
   padding: 2vw 3.733333vw;
-  margin: -.133333vw 0;
+  margin: -0.133333vw 0;
   z-index: 101;
   top: 0;
   left: 0;
@@ -450,7 +453,7 @@ nav li {
 }
 .recomd {
   display: flex;
-  height: .60rem;
+  height: 0.6rem;
   align-items: center;
 }
 .recomd a {

@@ -1,23 +1,35 @@
 <template>
     <!-- 选项切换 S -->
   		<div>
-		    <div class="shop_tab">
-		      <ul>
-		        <li><p class="active">点餐</p></li>
-		        <li><p>评价</p></li>
-		        <li><p>商家</p></li>
-		      </ul>
-		    </div>
-		    <div class="hot">
-		      <img src="images/detail/hlsbanner.webp" alt="">
-		    </div>
-		</div>
+    <div class="shop_tab">
+      <ul>
+        <li><p class="active">点餐</p></li>
+        <li><p>评价</p></li>
+        <li><p>商家</p></li>
+      </ul>
+    </div>
+    <div class="hot">
+      <img src="images/detail/hlsbanner.webp" alt="">
+    </div>
+  </div>
   <!-- 选项切换 E -->
 </template>
 
+<script>
+export default {
+  data () {
+    return {
+      scrollTop: 0,
+      top: 0,
+      barFixed: false
+    }
+  }
+}
+</script>
+
 <style>
 /* 选项切换 S */
-.isFixed {
+.tabFixed {
     position: fixed;
     width: 100%;
     z-index: 999;

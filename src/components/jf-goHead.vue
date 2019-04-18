@@ -53,14 +53,16 @@
     display: block;
     margin-left: 0.03rem;
   }
+  .shop_info {
+    position: relative;
+  }
   .shop_info .logo {
     height: 0.8rem;
     width: 0.8rem;
     border: 1px solid #ebebeb;
     border-radius: 0.02rem;
-    position: relative;
     position: absolute;
-    top: 0.4rem;
+    top: -0.9rem;
     left: 50%;
     margin-left: -0.33rem;
   }

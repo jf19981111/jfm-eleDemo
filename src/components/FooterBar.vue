@@ -19,14 +19,13 @@
 
 <script>
 export default {
-    props: {
-        tabs: {
-            type: Array
-        }
+  props: {
+    tabs: {
+      type: Array
     }
+  }
 }
 </script>
-
 
 <style>
 /* footer S */

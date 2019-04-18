@@ -1,186 +1,135 @@
 <template>
-<!-- menu S -->
-  		<div>
-		    <div class="main_menu">
-		      <div class="menu_category">
-		        <ul>
-		          <li>
-		            <img src="images/detail/fire.webp">
-		            <span>热销</span>
-		          </li>
-		           <li>
-		            <img src="images/detail/youhui.webp">
-		            <span>优惠</span>
-		          </li>
-		          <li>
-		            <span>华莱士超值套餐</span>
-		          </li>
-		          <li>
-		            <span>华莱士超值双人餐</span>
-		          </li><li>
-		            <span>套餐</span>
-		          </li><li>
-		            <span>华莱士新品</span>
-		          </li><li>
-		            <span>主食</span>
-		          </li>
-		        </ul>
-		      </div>
-		      <div class="menu_list">
-		        <dl>
-		          <dt class="menu_label">
-		            <span>热销</span>
-		          </dt>
-		          <dd class="menuItem">
-		            <img src="images/detail/menu01.webp" alt="">
-		            <section class="food_info">
-		              <p class="food_name">8.8元周年庆单人套餐</p>
-		              <p class="food_des">香辣鸡腿堡+上校鸡块+中可</p>
-		              <p class="food_sale">
-		                <span>月售325份</span>
-		                <span>好评率100%</span>
-		              </p>
-		              <div class="food_p">
-		                <div class="price">
-		                  <span>￥</span>
-		                  40
-		                </div>
-		                <a href="#">＋</a>
-		              </div>
-		            </section>
-		          </dd>
-		          <dd class="menuItem">
-		            <img src="images/detail/menu05.webp" alt="">
-		            <section class="food_info">
-		              <p class="food_name">四季套餐</p>
-		              <p class="food_des">香辣鸡腿堡+辣味鸡肉卷+香辣鸡翅+中可\n主要原料: 鸡肉</p>
-		              <p class="food_sale">
-		                <span>月售102份</span>
-		                <span>好评率90%</span>
-		              </p>
-		              <div class="food_p">
-		                <div class="price">
-		                  <span>￥</span>
-		                  22
-		                </div>
-		                <a href="#">＋</a>
-		              </div>
-		            </section>
-		          </dd>
-		          <dd class="menuItem">
-		            <img src="images/detail/menu04.webp" alt="">
-		            <section class="food_info">
-		              <p class="food_name">牛肉堡买一送一</p>
-		              <p class="food_des">主要原料: 牛肉</p>
-		              <p class="food_sale">
-		                <span>月售72份</span>
-		                <span>好评率100%</span>
-		              </p>
-		              <div class="food_p">
-		                <div class="price">
-		                  <span>￥</span>
-		                   12
-		                </div>
-		                <a href="#">＋</a>
-		              </div>
-		            </section>
-		          </dd>
-		          <dd class="menuItem">
-		            <img src="images/detail/menu6.webp" alt="">
-		            <section class="food_info">
-		              <p class="food_name">鸡米花</p>
-		              <p class="food_des">主要原料: 鸡肉</p>
-		              <p class="food_sale">
-		                <span>月售59份</span>
-		                <span>好评率100%</span>
-		              </p>
-		              <div class="food_p">
-		                <div class="price">
-		                  <span>￥</span>
-		                   7.5
-		                </div>
-		                <a href="#">＋</a>
-		              </div>
-		            </section>
-		          </dd>
-		          <dd class="menuItem">
-		            <img src="images/detail/menu7.webp" alt="">
-		            <section class="food_info">
-		              <p class="food_name">香辣鸡翅</p>
-		              <p class="food_des">主要原料: 鸡肉</p>
-		              <p class="food_sale">
-		                <span>月售53份</span>
-		                <span>好评率100%</span>
-		              </p>
-		              <div class="food_p">
-		                <div class="price">
-		                  <span>￥</span>
-		                   8.5
-		                </div>
-		                <a href="#">＋</a>
-		              </div>
-		            </section>
-		          </dd>
-		          <dd class="menuItem">
-		            <img src="images/detail/menu8.webp" alt="">
-		            <section class="food_info">
-		              <p class="food_name">蜜汁手扒鸡送中可</p>
-		              <p class="food_des">主要原料: 鸡肉</p>
-		              <p class="food_sale">
-		                <span>月售12份</span>
-		                <span>好评率100%</span>
-		              </p>
-		              <div class="food_p">
-		                <div class="price">
-		                  <span>￥</span>
-		                   44
-		                </div>
-		                <a href="#">＋</a>
-		              </div>
-		            </section>
-		          </dd>
-		          <dd class="menuItem">
-		            <img src="images/detail/menu9.webp" alt="">
-		            <section class="food_info">
-		              <p class="food_name">脆皮全鸡送中可</p>
-		              <p class="food_des">主要原料: 鸡肉</p>
-		              <p class="food_sale">
-		                <span>月售11份</span>
-		                <span>好评率100%</span>
-		              </p>
-		              <div class="food_p">
-		                <div class="price">
-		                  <span>￥</span>
-		                   44
-		                </div>
-		                <a href="#">＋</a>
-		              </div>
-		            </section>
-		          </dd>
-		          <dd class="menuItem">
-		            <img src="images/detail/menu10.webp" alt="">
-		            <section class="food_info">
-		              <p class="food_name">p超值套餐</p>
-		              <p class="food_des">3根华香脆骨串+1杯中可主要原料: 鸡脆骨</p>
-		              <p class="food_sale">
-		                <span>月售1份</span>
-		                <span>好评率80%</span>
-		              </p>
-		              <div class="food_p">
-		                <div class="price">
-		                  <span>￥</span>
-		                   21
-		                </div>
-		                <a href="#">＋</a>
-		              </div>
-		            </section>
-		          </dd>
-		        </dl>
-		      </div>
-		    </div>
-		</div>
-  <!-- menu E -->
+<!-- 商家详情页 -->
+  <div>
+    <div class="main_menu">
+      <div class="menu_category">
+        <ul>
+          <li v-for="(item,index) in category"
+              :key="index"
+              :class="{'active': curTab == index}"
+              @click="curTab = index">
+            <img :src="item.imgSrc" v-if="item.isExist">
+            <span>{{ item.name }}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="menu_list">
+        <dl v-for="(label,index) in menuArr"
+            :key="index">
+          <dt class="menu_label">
+            <span>{{ label.name }}</span>
+          </dt>
+          <dd class="menuItem"
+              v-for="(sel,index) in label.foods"
+              :key="index" @click="shopId(sel.specfoods[0].food_id)">
+            <img :src="sel.image_path" alt="">
+            <section class="food_info">
+              <p class="food_name">{{ sel.name }}</p>
+              <p class="food_des">{{ sel.description }}</p>
+              <p class="food_sale">
+                <span>月售{{ sel.month_sales }}份</span>
+                <span>好评率{{ sel.satisfy_rate }}%</span>
+              </p>
+              <div class="food_act"  v-if="sel.activity != null">
+                <span>{{ sel.activity.benefit_text }}</span>
+                <span>{{ sel.activity.applicable_quantity_text }}</span>
+              </div>
+              <div class="food_p">
+                <div class="price">
+                  <span>￥</span>
+                  {{ sel.specfoods[0].price }}
+                  <del v-if="sel.specfoods[0].original_price">
+                    ￥{{ sel.specfoods[0].original_price }}
+                  </del>
+                </div>
+                <a href="#">＋</a>
+              </div>
+            </section>
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
 </template>
+
+<script>
+import axios from 'axios'
+export default {
+  name: 'detail',
+  data () {
+    return {
+      curTab: '',
+      category: [
+        {
+          name: '热销',
+          imgSrc: '../../images/detail/fire.webp',
+          isExist: true
+        },
+        {
+          name: '优惠',
+          imgSrc: '../../images/detail/youhui.webp',
+          isExist: true
+        },
+        {
+          name: '华莱士超值套餐'
+        },
+        {
+          name: '华莱士超值双人餐'
+        },
+        {
+          name: '套餐'
+        },
+        {
+          name: '华莱士新品'
+        },
+        {
+          name: '主食'
+        },
+        {
+          name: '华莱士小食餐'
+        },
+        {
+          name: '华莱士饮料'
+        },
+        {
+          name: '天天优惠'
+        },
+        {
+          name: '经典主食'
+        },
+        {
+          name: '特惠套餐'
+        },
+        {
+          name: '华莱士单人餐'
+        }
+      ],
+      menuArr: []
+    }
+  },
+  mounted () {
+    axios.get('/json/goods.json')
+      .then((result) => {
+        // console.log(result.data.menu)
+        this.menuArr = result.data.menu
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  },
+  methods: {
+    shopId (val_id) {
+      // console.log(val_id)
+      this.$router.push({
+        name: 'Shop',
+        params: {
+          shop_id: val_id
+        }
+      })
+    }
+  }
+}
+</script>
 
 <style>
 /* menu S */

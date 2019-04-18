@@ -4,7 +4,8 @@
   <div class="content">
     <ul>
       <li>
-        <router-link to="/goods">
+        <!-- <router-link to="/goods"> -->
+        <router-link :to="{ path: '/goods', query: { sellId: menuArr.id } }">
           <div class="shop_info">
             <img :src="menuArr.image_path" class="shop_img">
             <div class="shop_main">
@@ -73,7 +74,7 @@ export default {
     menuArr: {
       type: Object
     }
-  },
+  }
 
 }
 </script>
