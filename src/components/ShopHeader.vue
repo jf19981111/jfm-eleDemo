@@ -7,8 +7,8 @@
 
 <script>
 export default {
-  props:['imgPic'],
-  mounted(){
+  props: ['imgPic'],
+  mounted () {
     // console.log(this.imgPic);
   },
   methods: {

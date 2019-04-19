@@ -4,7 +4,7 @@
 
     <h1><img src="//shadow.elemecdn.com/faas/h5/static/logo.ba876fd.png" alt=""></h1>
     <div class="main-two">
-      <input type="text" placeholder="用户名:" v-model="useName">
+      <input type="text" placeholder="手机号:" v-model="useName" @blur="fn2">
      <!--  <div class="hr-30"></div> -->
       <input type="password" placeholder="密码:" v-model="usePsw">
       <div class="main-xy">新用户登录即自动注册，并表示已同意<a href="https://h5.ele.me/service/agreement/#initTitle=%E7%94%A8%E6%88%B7%E6%9C%8D%E5%8A%A1%E5%8D%8F%E8%AE%AE&key=ruleQue18">《用户服务协议》</a></div>
@@ -20,58 +20,68 @@ export default {
   data(){
     return {
       useName:'',
-      usePsw:''
+      usePsw:'',
+      isOk:false
     }
   },
   methods:{
     fn(){
       var name = this.useName;
       var pwd = this.usePsw;
+      if(name != '' && pwd != '' && this.isOk){
 
-      if (name != '' && pwd != '') {
-          var goods = localStorage.getItem("logingoods");//获取当前用户的缓存（没有的话就是null）
-          if(goods){//存在
-            var b = JSON.parse(goods)
-            var k = b.find(item => {//
-            return  Object.keys(item)[0] === name //当前用户名是否存在 存在返回该数组 不存在 undefined
-            })
-            if(k){//用户名存在
-              if(k[name] === pwd){//密码正确
-               window.islogin="true";
-                this.$router.push('/home');
-    
-    
-    
-              }else{//密码错误
-                alert("密码错误,请重新输入")
-              }
-    
-            }else{//用户名不存在
-               var obj = {};
-               obj[name]=pwd;
-               b.push(obj)
-               var goodsSTR = JSON.stringify(b);
-               localStorage.setItem("logingoods",goodsSTR);//设置缓存
-               window.islogin="true";
-                this.$router.push('/home');
-    
-            }
-    
-          }else{//不存在
-          var loginArr = [];
-          var obj = {};
-          obj[name]=pwd;
-          loginArr.push(obj)
-          var goodsSTR = JSON.stringify(loginArr);
-          localStorage.setItem("logingoods",goodsSTR);//设置缓存
-          console.log('缓存没有')
+        var goods = localStorage.getItem("logingoods");//获取当前用户的缓存（没有的话就是null）
+      if(goods){//存在
+        var b = JSON.parse(goods)
+        var k = b.find(item => {//
+        return  Object.keys(item)[0] === name //当前用户名是否存在 存在返回该数组 不存在 undefined
+        })
+        if(k){//用户名存在
+          if(k[name] === pwd){//密码正确
+           window.islogin="true";
+            document.cookie = "phone"+"="+name;
+           this.$router.back();
+
+            // alert("登录了")
+
+          }else{//密码错误
+            alert("密码错误,请重新输入")
           }
 
-      } else {
-          alert('用户名或密码不能为空')
+        }else{//用户名不存在
+           var obj = {};
+           obj[name]=pwd;
+           b.push(obj)
+           var goodsSTR = JSON.stringify(b);
+           localStorage.setItem("logingoods",goodsSTR);//设置缓存
+           window.islogin="true";
+           document.cookie = "phone"+"="+name;
+
+            alert("新的用户")
+
+        }
+
+      }else{//不存在
+      var loginArr = [];
+      var obj = {};
+      obj[name]=pwd;
+      loginArr.push(obj)
+      var goodsSTR = JSON.stringify(loginArr);
+      localStorage.setItem("logingoods",goodsSTR);//设置缓存
+       window.islogin="true";
+       document.cookie = "phone"+"="+name;
+
+            alert("第一位用户")
       }
-      
-    //   console.log(k,'啊啊啊啊')
+
+      }else{
+        alert('手机号或密码有误')
+      }
+    },
+    fn2(){
+      var reg = new RegExp();
+      var pReg = /^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$/;
+      this.isOk = pReg.test(this.useName)
     }
   }
   
@@ -98,7 +108,7 @@ body,html{
       left: 10%;
       right: 10%;
       bottom: 0;
-   
+
       h1{
       width: 130px;
       height: 56px;
@@ -122,7 +132,7 @@ body,html{
       }
       .main-xy{
         font-size: 14px;
-        margin-top: 15px; 
+        margin-top: 15px;
         a{
           color: #2395ff;
         }
@@ -146,8 +156,7 @@ body,html{
         margin-top: 20px;
       }
     }
-    
-    
+
   }
 
 </style>

@@ -56,7 +56,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       islogin: window.islogin
     }

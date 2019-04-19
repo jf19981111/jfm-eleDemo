@@ -23,7 +23,7 @@
       <nav class="fruit">
         <ul>
           <li v-for="item in navList" :key="item.id">
-            <router-link to="/food">
+            <router-link to="/goods">
               <img :src="item.src" alt>
               <p>{{ item.name }}</p>
             </router-link>
@@ -102,21 +102,21 @@
       </div>
       <!-- 商家推荐 E -->
       <!-- content S -->
-      
+
         <jfContent :menuArr="menu.restaurant" v-for="(menu,index) in menus" :key="index"></jfContent>
-      
+
       <!-- content E -->
     </div>
   </van-list>
 </template>
 
 <script>
-import jfContent from "../../components/jf-content.vue"
+import jfContent from '../../components/jf-content.vue'
 import Banner from '../../components/Banner.vue'
-import { mapMutations, mapState, mapGetters,mapActions } from 'vuex'
+import { mapMutations, mapState, mapGetters, mapActions } from 'vuex'
 // import axios from "axios";
 export default {
-  data() {
+  data () {
     return {
       /**
        * isShow 显示隐藏
@@ -137,53 +137,53 @@ export default {
       navList: [
         {
           id: 1,
-          name: "美食",
-          src: require("../../static/images/nav/meishi.png")
+          name: '美食',
+          src: require('../../static/images/nav/meishi.png')
         },
         {
           id: 2,
-          name: "晚餐",
-          src: require("../../static/images/nav/wancan.png")
+          name: '晚餐',
+          src: require('../../static/images/nav/wancan.png')
         },
         {
           id: 3,
-          name: "商超便利",
-          src: require("../../static/images/nav/chaoshi.png")
+          name: '商超便利',
+          src: require('../../static/images/nav/chaoshi.png')
         },
         {
           id: 4,
-          name: "水果",
-          src: require("../../static/images/nav/shuiguo.png")
+          name: '水果',
+          src: require('../../static/images/nav/shuiguo.png')
         },
         {
           id: 5,
-          name: "医药健康",
-          src: require("../../static/images/nav/yiliao.png")
+          name: '医药健康',
+          src: require('../../static/images/nav/yiliao.png')
         },
         {
           id: 6,
-          name: "浪漫鲜花",
-          src: require("../../static/images/nav/xianhua.png")
+          name: '浪漫鲜花',
+          src: require('../../static/images/nav/xianhua.png')
         },
         {
           id: 7,
-          name: "美食",
-          src: require("../../static/images/nav/yiliao.png")
+          name: '美食',
+          src: require('../../static/images/nav/yiliao.png')
         },
         {
           id: 8,
-          name: "汉堡披萨",
-          src: require("../../static/images/nav/yiliao.png")
+          name: '汉堡披萨',
+          src: require('../../static/images/nav/yiliao.png')
         },
         {
           id: 9,
-          name: "厨房生鲜",
-          src: require("../../static/images/nav/shuicai.png")
+          name: '厨房生鲜',
+          src: require('../../static/images/nav/shuicai.png')
         },
         {
           id: 10,
-          name: "炸鸡串",
-          src: require("../../static/images/nav/xiaochi.png")
+          name: '炸鸡串',
+          src: require('../../static/images/nav/xiaochi.png')
         }
       ],
       /**
@@ -194,39 +194,39 @@ export default {
           id: 1,
           imgUrl: '/images/banner/banner1.webp'
         },
-         {
+        {
           id: 2,
           imgUrl: '/images/banner/banner2.webp'
         },
         {
           id: 3,
           imgUrl: '/images/banner/banner3.webp'
-        },
+        }
       ],
 
       // 地址
-      address: ""
-    };
+      address: ''
+    }
   },
   computed: {
-    ...mapState("seller", [
+    ...mapState('seller', [
       // 'loading', // 计算属性是不允许修改的
-      "menus",
-      "pageNumber",
-      "pageSize",
-      "totalSize"
+      'menus',
+      'pageNumber',
+      'pageSize',
+      'totalSize'
     ]),
 
-    ...mapGetters("seller", ["totalPage", "finished"]),
+    ...mapGetters('seller', ['totalPage', 'finished']),
 
     loading: {
-      get() {
-        return this.$store.state.seller.loading;
+      get () {
+        return this.$store.state.seller.loading
       },
 
-      set(val) {
+      set (val) {
         // 如果说 要 提交一个子模块的 突变，那么要加上 该模块 seller/changeLoading
-        this.$store.commit("seller/changeLoading", val);
+        this.$store.commit('seller/changeLoading', val)
       }
     }
   },
@@ -238,56 +238,56 @@ export default {
     /**
      * 地址城市加载
      */
-    dizhi() {
+    dizhi () {
       this.$router.push({
-        path: "/map"
-      });
+        path: '/map'
+      })
     },
 
-    ...mapMutations("seller", [
-      "changeList",
-      "changeTotalSize",
-      "changeLoading",
-      "addPageNum"
+    ...mapMutations('seller', [
+      'changeList',
+      'changeTotalSize',
+      'changeLoading',
+      'addPageNum'
     ]),
 
-    ...mapActions("seller", ["onLoad"]),
+    ...mapActions('seller', ['onLoad']),
 
     /**
      * 滚动事件 固定
      */
-    onScroll() {
+    onScroll () {
       // console.log('1111',scroll)
       // 计算滚动条距离顶部的距离
-      let scrollTop = document.documentElement.scrollTop;
-      let search = document.getElementById("search");
-      let recomd = document.getElementById("recomd");
+      let scrollTop = document.documentElement.scrollTop
+      let search = document.getElementById('search')
+      let recomd = document.getElementById('recomd')
       // console.log(scrollTop)
       //  console.log(search.offsetTop)
       // let temp = recomd.offsetTop
       // console.log(scrollTop,recomd.offsetTop,temp)
       if (scrollTop >= 30) {
-        this.searchFixed = true;
+        this.searchFixed = true
       } else {
-        this.searchFixed = false;
+        this.searchFixed = false
       }
       if (scrollTop >= 490) {
-        this.isFixed = true;
+        this.isFixed = true
       } else {
-        this.isFixed = false;
+        this.isFixed = false
       }
     }
   },
-  mounted() {
+  mounted () {
     // 判断session是否存在地址
-    this.address = sessionStorage.getItem("addr");
+    this.address = sessionStorage.getItem('addr')
     // console.log('hello')
-    window.addEventListener("scroll", this.onScroll);
+    window.addEventListener('scroll', this.onScroll)
   },
   beforeDestroy () {
-    window.removeEventListener("scroll", this.onScroll);
+    window.removeEventListener('scroll', this.onScroll)
   }
-};
+}
 </script>
 
 <style>
@@ -318,7 +318,7 @@ export default {
   padding: 2vw 3.733333vw;
   margin: -0.133333vw 0;
   z-index: 101;
-  top: -26px;
+  top: -20px;
   position: relative;
 }
 .searchFixed {
@@ -446,7 +446,7 @@ nav li {
 }
 .fixed {
   position: fixed;
-  top: 54px;
+  top: 50px;
   width: 100%;
   background: #fff;
   z-index: 10;

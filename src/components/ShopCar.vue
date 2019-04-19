@@ -11,7 +11,8 @@
         </div>
       </div>
       <ul>
-        <li class="goodsInfo" v-for="(item,index) in shopList" :key="index" v-if="item.goodsNum">
+        <!-- v-if="item.goodsNum" -->
+        <li class="goodsInfo" v-for="(item,index) in shopList" :key="index">
           <div class="goodsname">{{ item.goodsName }}</div>
           <div class="priceInfo">
             <del v-if="item.yuanjia">￥{{ item.yuanjia }}</del>￥
@@ -27,9 +28,9 @@
     </div>
     <div class="car-foot">
       <transition enter-active-class="animate heartBeat" leave-active-class="animated heartBeat">
-        <div class="carlogo" :class="{active:totalNum}" @click="showList=!showList"> 
+        <div class="carlogo" :class="{active:totalNum}" @click="showList=!showList">
           <span class="iconfont icon-gouwuche"></span>
-          
+
           <i class="countNum">{{ totalNum }}</i>
         </div>
       </transition>
@@ -55,12 +56,12 @@
 
 <script>
 export default {
-    props: ['isclick'],
+  props: ['isclick'],
   data () {
     return {
       numData: 0,
-      shopList: [], //购物车商品总信息
-      totalNum: 0 ,//购物车商品总数量
+      shopList: [], // 购物车商品总信息
+      totalNum: 0, // 购物车商品总数量
       isClick: false,
       totalMoneyY: 0,
       totalMoneyX: 0,
@@ -69,75 +70,73 @@ export default {
   },
   methods: {
     jian (id) {
-      var goodInfo = localStorage.getItem('goodsInfo');
-      var arr = JSON.parse(goodInfo);
+      var goodInfo = localStorage.getItem('goodsInfo')
+      var arr = JSON.parse(goodInfo)
       // var flag = true; //默认不含有该商品
       //  console.log('===========')
-        var flag = true;
-        var index = 0;
-        for(var i =0;i<arr.length;i++){
-          if(id==arr[i].shopId){
-            if(arr[i].goodsNum==1){
-              arr.splice(i,1);
-              // this.showList=false;
-              flag=false;
-            }
-            index = i;
+      var flag = true
+      var index = 0
+      for (var i = 0; i < arr.length; i++) {
+        if (id == arr[i].shopId) {
+          if (arr[i].goodsNum == 1) {
+            arr.splice(i, 1)
+            // this.showList=false;
+            flag = false
           }
-        }
-        if(flag){
-          arr[index].goodsNum--;
-        }
-        localStorage.setItem('goodsInfo',JSON.stringify(arr));
-
-    },
-    jia (id) {
-      var goodInfo = localStorage.getItem('goodsInfo');
-      var arr = JSON.parse(goodInfo);
-      for(var i =0;i<arr.length;i++){
-        if(id==arr[i].shopId){
-          arr[i].goodsNum++;
+          index = i
         }
       }
-      localStorage.setItem('goodsInfo',JSON.stringify(arr));
-
+      if (flag) {
+        arr[index].goodsNum--
+      }
+      localStorage.setItem('goodsInfo', JSON.stringify(arr))
+    },
+    jia (id) {
+      var goodInfo = localStorage.getItem('goodsInfo')
+      var arr = JSON.parse(goodInfo)
+      for (var i = 0; i < arr.length; i++) {
+        if (id == arr[i].shopId) {
+          arr[i].goodsNum++
+        }
+      }
+      localStorage.setItem('goodsInfo', JSON.stringify(arr))
     },
     getGoodsInfo () {
-      this.totalNum = 0;
-      this.totalMoneyY = 0;
-      this.totalMoneyX = 0;
-      var goodInfo = localStorage.getItem('goodsInfo');
-      if(goodInfo){
-        var goodsArr = JSON.parse(goodInfo);
-        this.shopList = goodsArr;
-        for(var i = 0;i<goodsArr.length;i++){
-          this.totalNum+=goodsArr[i].goodsNum;
-          this.totalMoneyX+=goodsArr[i].xianjia*goodsArr[i].goodsNum;
-          this.totalMoneyY+=goodsArr[i].yuanjia*goodsArr[i].goodsNum;
+      this.totalNum = 0
+      this.totalMoneyY = 0
+      this.totalMoneyX = 0
+      var goodInfo = localStorage.getItem('goodsInfo')
+      if (goodInfo) {
+        var goodsArr = JSON.parse(goodInfo)
+        this.shopList = goodsArr
+        for (var i = 0; i < goodsArr.length; i++) {
+          this.totalNum += goodsArr[i].goodsNum
+          this.totalMoneyX += goodsArr[i].xianjia * goodsArr[i].goodsNum
+          this.totalMoneyY += goodsArr[i].yuanjia * goodsArr[i].goodsNum
         }
       }
     },
     clearAll () {
-      localStorage.clear();
-      this.getGoodsInfo();
+      localStorage.clear()
+      this.getGoodsInfo()
     },
     jiesuan () {
-      sessionStorage.clear();
+      sessionStorage.clear()
     //   this.$router.push({
     //     path: '/comfirm'
     //   })
     }
   },
   watch: {
-    isclick: function(newVal,oldVal){
-      this.getGoodsInfo ();
+    isclick: function (newVal, oldVal) {
+      this.getGoodsInfo()
     },
-    isClick: function(newVal,oldVal){
-      this.getGoodsInfo ();
+    isClick: function (newVal, oldVal) {
+      this.getGoodsInfo()
     }
   },
   mounted () {
-    this.getGoodsInfo();
+    this.getGoodsInfo()
     // console.log(this.totalNum);
   }
 }

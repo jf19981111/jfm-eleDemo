@@ -5,9 +5,9 @@
         v-for='(item,index) in banners'
         :key='index'>
         <img :src="item.imgUrl" alt=""></div>
-        
+
     </div>
-    
+
     <!-- 如果需要导航按钮 -->
     <!-- <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div> -->
@@ -19,29 +19,29 @@
 
 <script>
 /* const Swiper = window.Swiper; */
-import Swiper from 'swiper';
-import 'swiper/dist/css/swiper.min.css';
+import Swiper from 'swiper'
+import 'swiper/dist/css/swiper.min.css'
 export default {
-  data(){
+  data () {
     return {
-      swiper:null
+      swiper: null
     }
   },
-  mounted(){
-    if(!this.swiper){//在 data 中定义一个 swiper 为 null 当他为空的时候就会进来执行一遍，之后就不会再来执行了
-      this.swiper = new Swiper('.swiper-container',{
-        loop:true,//无缝轮播
+  mounted () {
+    if (!this.swiper) { // 在 data 中定义一个 swiper 为 null 当他为空的时候就会进来执行一遍，之后就不会再来执行了
+      this.swiper = new Swiper('.swiper-container', {
+        loop: true, // 无缝轮播
         // autoplay:true,
         autoplay: {
-            delay: 2000,
-            stopOnLastSlide: false,
-            disableOnInteraction: true,
+          delay: 2000,
+          stopOnLastSlide: false,
+          disableOnInteraction: true
         },
 
-        pagination:{//显示分页小圆点
-          el:'.swiper-pagination'
+        pagination: {// 显示分页小圆点
+          el: '.swiper-pagination'
         }
-  
+
       })
     }
   },
@@ -54,9 +54,9 @@ export default {
 
     })
   }, */
-  props:{
-    banners:{
-      type:Array
+  props: {
+    banners: {
+      type: Array
     }
   }
 }
@@ -70,5 +70,5 @@ export default {
       width: 100%;
       height: 110px;
     }
-}  
+}
 </style>

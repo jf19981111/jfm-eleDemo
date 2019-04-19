@@ -25,7 +25,7 @@ import jfRecomd from './jf-recommend.vue'
 import jfDetail from './jf-detail.vue'
 import ShopCar from './ShopCar'
 export default {
-  data() {
+  data () {
     return {
       isclick: 0
     }

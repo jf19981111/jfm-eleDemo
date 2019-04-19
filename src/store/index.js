@@ -7,10 +7,10 @@ Vue.use(Vuex)
 
 // 暴露仓库的实例对象
 const store = new Vuex.Store({
-    modules: {
-        seller: seller
-    }
+  modules: {
+    seller: seller
+  }
 
 })
 
-export default store;
+export default store

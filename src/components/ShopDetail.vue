@@ -30,18 +30,18 @@
 export default {
   data () {
     return {
-      ShopNum: 0,//当前商品加入购物车的数量
-      yuanjia: '58', //当前商品的原价
-      xianjia: '30', //当前商品的现价
-      goodsName: '四季套餐', //当前商品的名称
-      shopId: '1', //当前商品的id编号
-      allGoodsNum: 0 //所有加入购物车商品的总数量
+      ShopNum: 0, // 当前商品加入购物车的数量
+      yuanjia: '58', // 当前商品的原价
+      xianjia: '30', // 当前商品的现价
+      goodsName: '四季套餐', // 当前商品的名称
+      shopId: '1', // 当前商品的id编号
+      allGoodsNum: 0 // 所有加入购物车商品的总数量
     }
   },
   methods: {
     add () {
-      this.ShopNum++;
-      console.log(this.ShopNum);
+      this.ShopNum++
+      console.log(this.ShopNum)
       var obj = {
         shopId: this.shopId,
         yuanjia: this.yuanjia,
@@ -49,49 +49,49 @@ export default {
         goodsName: this.goodsName,
         goodsNum: 1
       }
-      this.getGoodInfo(obj);
+      this.getGoodInfo(obj)
     },
     jian () {
-      this.ShopNum--;
-      var stJson = localStorage.getItem('goodsInfo');
-      var stArr = JSON.parse(stJson);
-      if(this.ShopNum<=0){
-        this.ShopNum = 0;
-        //需要删除localstorage这条商品数据
-        for(var i =0;i<stArr.length;i++){
-          if(this.shopId==stArr[i].shopId){
-            stArr.splice(i,1);
+      this.ShopNum--
+      var stJson = localStorage.getItem('goodsInfo')
+      var stArr = JSON.parse(stJson)
+      if (this.ShopNum <= 0) {
+        this.ShopNum = 0
+        // 需要删除localstorage这条商品数据
+        for (var i = 0; i < stArr.length; i++) {
+          if (this.shopId == stArr[i].shopId) {
+            stArr.splice(i, 1)
           }
         }
-      }else{
+      } else {
         // 将该商品的goodsNum数量-1操作
-        for(var i =0;i<stArr.length;i++){
-          if(this.shopId==stArr[i].shopId){
-            stArr[i].goodsNum--;
+        for (var i = 0; i < stArr.length; i++) {
+          if (this.shopId == stArr[i].shopId) {
+            stArr[i].goodsNum--
           }
         }
       }
-      localStorage.setItem('goodsInfo',JSON.stringify(stArr));
-      console.log(this.ShopNum);
+      localStorage.setItem('goodsInfo', JSON.stringify(stArr))
+      console.log(this.ShopNum)
     },
     getGoodInfo (obj) {
-      var localstarage = localStorage.getItem('goodsInfo');
-      if(localstarage){
+      var localstarage = localStorage.getItem('goodsInfo')
+      if (localstarage) {
         // console.log(localstarage);
-        var localstarageArr = JSON.parse(localstarage);
+        var localstarageArr = JSON.parse(localstarage)
         // console.log(localstarageArr);
-        var flag = true;//默认没有加入该商品到购物车
-        for(var i = 0;i < localstarageArr.length;i++ ){
-          if(this.shopId==localstarageArr[i].shopId){
-            localstarageArr[i].goodsNum++;
-            flag = false;
+        var flag = true// 默认没有加入该商品到购物车
+        for (var i = 0; i < localstarageArr.length; i++) {
+          if (this.shopId == localstarageArr[i].shopId) {
+            localstarageArr[i].goodsNum++
+            flag = false
           }
         }
-        if(flag){
-          localstarageArr.push(obj);
+        if (flag) {
+          localstarageArr.push(obj)
         }
-        localStorage.setItem('goodsInfo',JSON.stringify(localstarageArr));
-      }else{
+        localStorage.setItem('goodsInfo', JSON.stringify(localstarageArr))
+      } else {
         console.log(8888888)
         var arr = [{
           shopId: this.shopId,
@@ -99,20 +99,20 @@ export default {
           xianjia: this.xianjia,
           goodsName: this.goodsName,
           goodsNum: 1
-        }];
-        console.log(arr);
-        localStorage.setItem('goodsInfo',JSON.stringify(arr));
+        }]
+        console.log(arr)
+        localStorage.setItem('goodsInfo', JSON.stringify(arr))
       }
     }
   },
   mounted () {
-    var num = localStorage.getItem('goodsInfo');
-    if(num){
-      var arr = JSON.parse(num);
-      for(var i =0;i < arr.length;i++){
-        this.allGoodsNum+=arr[i].goodsNum;
-        if(arr[i].shopId==this.shopId){
-          this.ShopNum = arr[i].goodsNum;
+    var num = localStorage.getItem('goodsInfo')
+    if (num) {
+      var arr = JSON.parse(num)
+      for (var i = 0; i < arr.length; i++) {
+        this.allGoodsNum += arr[i].goodsNum
+        if (arr[i].shopId == this.shopId) {
+          this.ShopNum = arr[i].goodsNum
         }
       }
     }
