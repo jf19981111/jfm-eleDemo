@@ -15,76 +15,72 @@
   </div>
 </template>
 <script>
-import Axios from 'axios';
+import Axios from 'axios'
 export default {
-  data(){
+  data () {
     return {
-      useName:'',
-      usePsw:'',
-      isOk:false
+      useName: '',
+      usePsw: '',
+      isOk: false
     }
   },
-  methods:{
-    fn(){
-      var name = this.useName;
-      var pwd = this.usePsw;
-      if(name != '' && pwd != '' && this.isOk){
+  methods: {
+    fn () {
+      var name = this.useName
+      var pwd = this.usePsw
+      if (name != '' && pwd != '' && this.isOk) {
+        var goods = localStorage.getItem('logingoods')// 获取当前用户的缓存（没有的话就是null）
+        if (goods) { // 存在
+          var b = JSON.parse(goods)
+          var k = b.find(item => { //
+            return Object.keys(item)[0] === name // 当前用户名是否存在 存在返回该数组 不存在 undefined
+          })
+          if (k) { // 用户名存在
+            if (k[name] === pwd) { // 密码正确
+              window.islogin = 'true'
+              document.cookie = 'phone' + '=' + name
+              this.$router.back()
 
-        var goods = localStorage.getItem("logingoods");//获取当前用户的缓存（没有的话就是null）
-      if(goods){//存在
-        var b = JSON.parse(goods)
-        var k = b.find(item => {//
-        return  Object.keys(item)[0] === name //当前用户名是否存在 存在返回该数组 不存在 undefined
-        })
-        if(k){//用户名存在
-          if(k[name] === pwd){//密码正确
-           window.islogin="true";
-            document.cookie = "phone"+"="+name;
-           this.$router.back();
+              // alert("登录了")
+            } else { // 密码错误
+              alert('密码错误,请重新输入')
+            }
+          } else { // 用户名不存在
+            var obj = {}
+            obj[name] = pwd
+            b.push(obj)
+            var goodsSTR = JSON.stringify(b)
+            localStorage.setItem('logingoods', goodsSTR)// 设置缓存
+            window.islogin = 'true'
+            document.cookie = 'phone' + '=' + name
 
-            // alert("登录了")
-
-          }else{//密码错误
-            alert("密码错误,请重新输入")
+            // alert("新的用户")
+            this.$router.back()
           }
+        } else { // 不存在
+          var loginArr = []
+          var obj = {}
+          obj[name] = pwd
+          loginArr.push(obj)
+          var goodsSTR = JSON.stringify(loginArr)
+          localStorage.setItem('logingoods', goodsSTR)// 设置缓存
+          window.islogin = 'true'
+          document.cookie = 'phone' + '=' + name
 
-        }else{//用户名不存在
-           var obj = {};
-           obj[name]=pwd;
-           b.push(obj)
-           var goodsSTR = JSON.stringify(b);
-           localStorage.setItem("logingoods",goodsSTR);//设置缓存
-           window.islogin="true";
-           document.cookie = "phone"+"="+name;
-
-            alert("新的用户")
-
+          // alert("第一位用户")
+          this.$router.back()
         }
-
-      }else{//不存在
-      var loginArr = [];
-      var obj = {};
-      obj[name]=pwd;
-      loginArr.push(obj)
-      var goodsSTR = JSON.stringify(loginArr);
-      localStorage.setItem("logingoods",goodsSTR);//设置缓存
-       window.islogin="true";
-       document.cookie = "phone"+"="+name;
-
-            alert("第一位用户")
-      }
-
-      }else{
+      } else {
         alert('手机号或密码有误')
       }
     },
-    fn2(){
-      var reg = new RegExp();
-      var pReg = /^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$/;
+    fn2 () {
+      var reg = new RegExp()
+      var pReg = /^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$/
       this.isOk = pReg.test(this.useName)
     }
   }
-  
+
 }
 </script>
 <style lang="scss">

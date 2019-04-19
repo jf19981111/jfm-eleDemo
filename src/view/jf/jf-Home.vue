@@ -69,17 +69,6 @@
               <img src="/images/banner/banner1.webp" style="width: 100%;height: 110px;">
             </a>
           </li> -->
-          <!-- <li>
-            <a href="">
-              <img src="/images/banner/banner2.webp" style="width: 100%;height: 110px;">
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <img src="/images/banner/banner3.webp" style="width: 100%;height: 110px;">
-            </a>
-          </li> -->
-        <!-- </ul> -->
       <!-- </div> -->
       <!-- banner E -->
       <!-- 商家推荐 S -->
@@ -138,52 +127,52 @@ export default {
         {
           id: 1,
           name: '美食',
-          src: require('../../static/images/nav/meishi.png')
+          src: '/images/nav/meishi.png'
         },
         {
           id: 2,
           name: '晚餐',
-          src: require('../../static/images/nav/wancan.png')
+          src: '/images/nav/wancan.png'
         },
         {
           id: 3,
           name: '商超便利',
-          src: require('../../static/images/nav/chaoshi.png')
+          src: '/images/nav/chaoshi.png'
         },
         {
           id: 4,
           name: '水果',
-          src: require('../../static/images/nav/shuiguo.png')
+          src: '/images/nav/shuiguo.png'
         },
         {
           id: 5,
           name: '医药健康',
-          src: require('../../static/images/nav/yiliao.png')
+          src: '/images/nav/yiliao.png'
         },
         {
           id: 6,
           name: '浪漫鲜花',
-          src: require('../../static/images/nav/xianhua.png')
+          src: '/images/nav/xianhua.png'
         },
         {
           id: 7,
           name: '美食',
-          src: require('../../static/images/nav/yiliao.png')
+          src: '/images/nav/yiliao.png'
         },
         {
           id: 8,
           name: '汉堡披萨',
-          src: require('../../static/images/nav/yiliao.png')
+          src: '/images/nav/yiliao.png'
         },
         {
           id: 9,
           name: '厨房生鲜',
-          src: require('../../static/images/nav/shuicai.png')
+          src: '/images/nav/shuicai.png'
         },
         {
           id: 10,
           name: '炸鸡串',
-          src: require('../../static/images/nav/xiaochi.png')
+          src: '/images/nav/xiaochi.png'
         }
       ],
       /**

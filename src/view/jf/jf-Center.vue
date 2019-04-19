@@ -3,7 +3,7 @@
     <div class="profile-top">
       <div class="profile-top-main">
         <h1><img src="/images/elm.png" alt=""></h1>
-        <div class="profile-top-main-text" @click="login">
+        <div class="profile-top-main-text" @click="logins">
           <p class="p1">{{sjs=sjs?sjs:"登录/注册"}}</p>
           <p class="p2"><i class="iconfont icon-shouji"></i>{{sj=sj?sj:"登陆后享受更多"}}</p>
           <i class="iconfont icon-jiantou"></i>
@@ -34,37 +34,37 @@
   </div>
 </template>
 <script>
-import { parse } from 'path';
+import { parse } from 'path'
 export default {
-  data(){
+  data () {
     return {
-      sj:"",
-      sjs:''
+      sj: '',
+      sjs: ''
     }
   },
-  
-  methods:{
-    login(){
-      if(document.cookie){
-        this.$router.push('./home')
-      }else{
-        this.$router.push('./login')
 
+  methods: {
+    login () {
+      if (document.cookie) {
+        this.$router.push('./home')
+      } else {
+        this.$router.push('./login')
       }
-        
     },
-    getCook(){
-    if(document.cookie){
-      var sjh = document.cookie.substr(6)
-      this.sj = sjh.substr(0,3)+"****"+sjh.substr(7)
-      this.sjs = new Date().getTime()
-      this.sjs = parseInt(sjh.substr(0,3))*3+3+"nelm"+parseInt(sjh.substr(7))*2+2
-      
-    }
+    getCook () {
+      if (document.cookie) {
+        var sjh = document.cookie.substr(6)
+        this.sj = sjh.substr(0, 3) + '****' + sjh.substr(7)
+        this.sjs = new Date().getTime()
+        this.sjs = parseInt(sjh.substr(0, 3)) * 3 + 3 + 'nelm' + parseInt(sjh.substr(7)) * 2 + 2
+      }
+    },
+    logins () {
+      this.$router.push('./login')
+    },
   },
-  },
-  
-  mounted(){
+
+  mounted () {
     this.getCook()
   }
 }
@@ -107,7 +107,7 @@ export default {
         height: 60px;
         border-radius: 50%;
         overflow: hidden;
-        
+
         img{
           width: 100%;
         }
